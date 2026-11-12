@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jornal Mental</title>
+<meta name="description" content="Jornal Mental: psiquiatria explicada com ciência e clareza, por Dr. Vitor Moreno Chaddad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f4ee; --surface:#ffffff; --ink:#1b1e22; --muted:#5d6470; --line:#ddd6c9;
+  --accent:#2f6f6a; --accent-soft:#d9ebe8; --red:#b5543c; --todo:#fff2c2; --todo-ink:#6b5300;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14171a; --surface:#1d2125; --ink:#eceae6; --muted:#a3a9b1; --line:#30363c;
+    --accent:#6fbfb6; --accent-soft:#1f3836; --red:#e58a70; --todo:#3d3416; --todo-ink:#f0d77a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14171a; --surface:#1d2125; --ink:#eceae6; --muted:#a3a9b1; --line:#30363c;
+  --accent:#6fbfb6; --accent-soft:#1f3836; --red:#e58a70; --todo:#3d3416; --todo-ink:#f0d77a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+/* Masthead */
+.top{border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px}
+.mast{text-align:center;padding:40px 0 22px;border-bottom:3px double var(--ink)}
+.mast h1{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:clamp(46px,11vw,104px);line-height:.95;margin:0;letter-spacing:-.02em}
+.mast p{margin:14px auto 0;max-width:560px;color:var(--muted);font-size:17px}
+nav{border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 26px;padding-top:12px;padding-bottom:12px;font-size:14px;font-weight:500}
+nav a{text-decoration:none}
+nav a:hover{color:var(--accent)}
+
+/* Sections */
+section{padding:52px 0;border-bottom:1px solid var(--line)}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
+h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0 0 14px}
+h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px;line-height:1.2;margin:0 0 8px}
+.lead{font-size:19px;color:var(--muted);max-width:640px}
+
+.grid{display:grid;gap:20px}
+@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.feat{grid-template-columns:1.3fr 1fr;align-items:center}}
+
+.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;text-decoration:none;transition:transform .15s,border-color .15s}
+a.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:600;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 10px;margin-bottom:12px}
+.go{display:inline-block;margin-top:14px;font-weight:600;color:var(--accent);font-size:15px}
+
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:999px;margin-top:8px}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+.yt{aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,var(--accent),#1c3f3c);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none}
+.yt span{width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+
+.about{display:grid;gap:28px}
+@media(min-width:760px){.about{grid-template-columns:220px 1fr;align-items:start}}
+.portrait{display:block;width:100%;max-width:220px;height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;border:4px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
+
+.social{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.social a{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;text-decoration:none;font-weight:500}
+.social a:hover{border-color:var(--accent)}
+.social svg{width:20px;height:20px;fill:currentColor}
+
+.todo{background:var(--todo);color:var(--todo-ink);border-radius:6px;padding:1px 6px;font-size:.9em;font-weight:600}
+
+footer{padding:36px 0 56px;font-size:13px;color:var(--muted)}
+footer .crisis{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:10px;padding:14px 16px;margin-bottom:20px;color:var(--ink);font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap"><span>Saúde mental com ciência</span><span>Por Dr. Vitor Moreno Chaddad</span></div></div>
+
+<header class="mast wrap">
+  <h1>Jornal Mental</h1>
+  <p>Psiquiatria explicada com clareza: o que a ciência diz, o que ainda não sabemos e o que isso muda na vida real.</p>
+</header>
+
+<nav><div class="wrap">
+  <a href="#videos">Vídeos</a><a href="#leia">Textos</a><a href="#ferramentas">Ferramentas</a><a href="#sobre">Sobre</a><a href="#redes">Redes</a>
+</div></nav>
+
+<main class="wrap">
+
+  <section id="videos">
+    <div class="grid feat">
+      <div>
+        <div class="label">No canal</div>
+        <h2>Assista ao Jornal Mental no YouTube</h2>
+        <p class="lead">Ansiedade, depressão, medicações, sono, comportamento. Temas da psiquiatria discutidos a partir das evidências, sem sensacionalismo.</p>
+        <a class="btn" href="https://www.youtube.com/@jornalmental">Ir para o canal</a>
+      </div>
+      <a class="yt" href="https://www.youtube.com/@jornalmental" aria-label="Abrir canal no YouTube">
+        <span><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <section id="leia">
+    <div class="label">Para ler com calma</div>
+    <h2>Textos e newsletter</h2>
+    <p class="lead">Ensaios mais longos, leitura de papers e bastidores do canal, direto no seu e-mail.</p>
+    <a class="card" href="https://substack.com/@vitormorenochaddad" style="margin-top:22px;padding:28px">
+      <span class="tag">Newsletter no Substack</span>
+      <h3 style="font-size:28px">Receba os textos novos por e-mail</h3>
+      <p style="font-size:16px;max-width:560px">Leituras de papers, reflexões sobre a clínica e os temas que aparecem nos vídeos, com mais profundidade.</p>
+      <span class="btn" style="margin-top:18px">Assinar a newsletter</span>
+    </a>
+  </section>
+
+  <section id="ferramentas">
+    <div class="label">Interativos</div>
+    <h2>Ferramentas para entender melhor</h2>
+    <p class="lead">Documentos interativos que você explora no seu ritmo, pelo celular ou computador.</p>
+    <div class="grid g3" style="margin-top:22px">
+      <a class="card" href="https://vchaddad.github.io/ciclo-ansiedade/">
+        <span class="tag">Ansiedade</span>
+        <h3>O ciclo da ansiedade</h3>
+        <p>Por que evitar alivia na hora e piora com o tempo. Gráfico interativo e teste rápido.</p>
+        <span class="go">Explorar →</span>
+      </a>
+      <div class="card" style="opacity:.6">
+        <span class="tag">Em breve</span>
+        <h3>Próximo interativo</h3>
+        <p>Novos materiais acompanham os vídeos do canal.</p>
+      </div>
+      <div class="card" style="opacity:.6">
+        <span class="tag">Em breve</span>
+        <h3>Próximo interativo</h3>
+        <p>Novos materiais acompanham os vídeos do canal.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="about">
+      <img class="portrait" src="foto.jpg" alt="Dr. Vitor Moreno Chaddad" width="220" height="220">
+      <div>
+        <div class="label">Quem escreve</div>
+        <h2>Dr. Vitor Moreno Chaddad</h2>
+        <p class="lead">Psiquiatra, criador do Jornal Mental. Produz conteúdo sobre saúde mental baseado em evidência científica para quem quer entender o que acontece com a própria mente.</p>
+        <p style="color:var(--muted);font-size:15px">Psiquiatra · CRM-SP 121159 · RQE 10850</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="redes">
+    <div class="label">Acompanhe</div>
+    <h2>Nas redes</h2>
+    <div class="social">
+      <a href="https://www.youtube.com/@jornalmental"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>YouTube</a>
+      <a href="https://www.instagram.com/vchaddad/"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.2 5.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>@vchaddad</a>
+      <a href="#" data-todo="tiktok" hidden><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.6a2.9 2.9 0 1 1-2-2.8V9.4a6.3 6.3 0 1 0 5.4 6.2V8.7a8.2 8.2 0 0 0 4.8 1.5V6.8z"/></svg>TikTok</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="crisis"><strong>Em sofrimento agora?</strong> Ligue 188 (CVV, 24 horas, gratuito) ou procure o pronto-socorro mais próximo. Em emergência, ligue 192 (SAMU).</div>
+  <p>O conteúdo do Jornal Mental é educativo e não substitui consulta, diagnóstico ou tratamento. Não interrompa nem altere medicações sem orientação de quem acompanha o seu caso.</p>
+  <p>© 2026 Jornal Mental · Dr. Vitor Moreno Chaddad · Psiquiatra · CRM-SP 121159 · RQE 10850</p>
+</footer>
+
+</body>
+</html>
