@@ -69,6 +69,8 @@ a.card:hover{transform:translateY(-2px);border-color:var(--accent)}
 .social a:hover{border-color:var(--accent)}
 .social svg{width:20px;height:20px;fill:currentColor}
 
+.art-img{width:100%;border-radius:10px;margin-bottom:14px;display:block;aspect-ratio:3/4;object-fit:cover}
+
 .todo{background:var(--todo);color:var(--todo-ink);border-radius:6px;padding:1px 6px;font-size:.9em;font-weight:600}
 
 footer{padding:36px 0 56px;font-size:13px;color:var(--muted)}
@@ -127,11 +129,13 @@ footer .crisis{background:var(--surface);border:1px solid var(--line);border-lef
         <p>Por que evitar alivia na hora e piora com o tempo. Gráfico interativo e teste rápido.</p>
         <span class="go">Explorar →</span>
       </a>
-      <div class="card" style="opacity:.6">
-        <span class="tag">Em breve</span>
-        <h3>Próximo interativo</h3>
-        <p>Novos materiais acompanham os vídeos do canal.</p>
-      </div>
+      <a class="card" href="https://github.com/storytold/artcraft">
+        <img class="art-img" src="ai-art.jpg" alt="Retrato gerado com inteligência artificial" loading="lazy">
+        <span class="tag">Arte com IA</span>
+        <h3>ArtCraft</h3>
+        <p>App open-source de criação de imagens e vídeos com IA. Composição em 2D, cenas em 3D e escolha de modelos.</p>
+        <span class="go">Ver no GitHub →</span>
+      </a>
       <div class="card" style="opacity:.6">
         <span class="tag">Em breve</span>
         <h3>Próximo interativo</h3>
